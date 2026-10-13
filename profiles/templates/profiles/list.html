@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>プロフィール一覧</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+</head>
+<body class="list-page">
+  <div class="page-center">
+    <div class="list-card">
+      <h1>プロフィール一覧</h1>
+
+      <div class="button-area">
+        <a href="{% url 'menu' %}" class="back-btn">メニューに戻る</a>
+      </div>
+
+      <form method="get" class="search-form">
+        <input type="text" name="search" value="{{ search }}" placeholder="検索">
+        <button type="submit" class="submit-btn">検索</button>
+      </form>
+
+      <div class="button-area button-area-center">
+        <a href="{% url 'profiles:profile_register' %}" class="create-btn">プロフィール登録</a>
+      </div>
+
+      <div class="profile-list">
+        {% for profile in profiles %}
+        <div class="profile-item" onclick="openModal(this)" data-id="{{ profile.id }}" data-name="{{ profile.name }}"
+          data-photo="{% if profile.photo %}{{ profile.photo.url }}{% endif %}" data-mbti="{{ profile.mbti }}"
+          data-hobby="{{ profile.hobby }}" data-skill="{{ profile.skill }}" data-department="{{ profile.department }}"
+          data-relationship="{{ profile.relationship }}" data-talk="{{ profile.talk }}">
+          {% if profile.photo %}
+          <img src="{{ profile.photo.url }}" alt="プロフィール写真" class="profile-photo">
+          {% endif %}
+          <p class="profile-name">{{ profile.name }}</p>
+        </div>
+        {% empty %}
+        <p class="message">プロフィールが登録されていません</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- モーダルは1つだけ -->
+  <div id="profile-modal" class="modal">
+    <div class="modal-content">
+      <h2>プロフィール詳細</h2>
+      <img id="modal-photo" class="modal-photo hidden-photo" alt="プロフィール写真">
+      <p><strong>氏名:</strong> <span id="modal-name"></span></p>
+      <p><strong>MBTI:</strong> <span id="modal-mbti"></span></p>
+      <p><strong>趣味:</strong> <span id="modal-hobby"></span></p>
+      <p><strong>特技:</strong> <span id="modal-skill"></span></p>
+      <p><strong>所属部署:</strong> <span id="modal-department"></span></p>
+      <p><strong>関係値:</strong> <span id="modal-relationship"></span></p>
+      <p><strong>最近話した内容:</strong> <span id="modal-talk"></span></p>
+
+      <form id="delete-form" method="post" action="" class="hidden-form">
+        {% csrf_token %}
+      </form>
+
+      <div class="button-area">
+        <a id="modal-edit-link" href="#">編集</a>
+        <button type="button" class="danger" onclick="confirmProfileDelete()">削除</button>
+        <button type="button" onclick="closeModal()">閉じる</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentProfileId = null;
+    function openModal(element) {
+      currentProfileId = element.dataset.id;
+      document.getElementById('modal-name').textContent = element.dataset.name;
+      document.getElementById('modal-mbti').textContent = element.dataset.mbti;
+      document.getElementById('modal-hobby').textContent = element.dataset.hobby;
+      document.getElementById('modal-skill').textContent = element.dataset.skill;
+      document.getElementById('modal-department').textContent = element.dataset.department;
+      document.getElementById('modal-relationship').textContent = element.dataset.relationship;
+      document.getElementById('modal-talk').textContent = element.dataset.talk;
+
+      const photo = document.getElementById('modal-photo');
+      if (element.dataset.photo) {
+        photo.src = element.dataset.photo;
+        photo.classList.remove('hidden-photo');
+      } else {
+        photo.classList.add('hidden-photo');
+      }
+
+      document.getElementById('modal-edit-link').href = `/profiles/edit/${currentProfileId}/`;
+      document.getElementById('delete-form').action = `/profiles/delete/${currentProfileId}/`;
+      document.getElementById('profile-modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('profile-modal').style.display = 'none';
+    }
+
+    function confirmProfileDelete() {
+      if (confirm("本当に削除してもよろしいですか？")) {
+        document.getElementById('delete-form').submit();
+      }
+    }
+
+    window.addEventListener('click', function (event) {
+      const modal = document.getElementById('profile-modal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

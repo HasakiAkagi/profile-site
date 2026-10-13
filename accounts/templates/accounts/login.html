@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ログイン</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+</head>
+<body class="login-page">
+  <div class="page-center">
+    <div class="login-container">
+      <h1>MBTIプロフィール</h1>
+      {% if message %}
+      <p class="message">{{ message }}</p>
+      {% endif %}
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="id">ユーザーID</label>
+          <input type="text" id="id" name="id" required>
+        </div>
+        <div class="form-group">
+          <label for="password">パスワード</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="submit-btn">ログイン</button>
+      </form>
+      <p class="link-text"><a href="{% url 'signup' %}">新規登録はこちら</a></p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>マイページ編集</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+</head>
+<body class="login-page">
+  <div class="page-center">
+    <div class="form-card">
+      <h1>マイページ編集</h1>
+
+      <div class="button-area">
+        <a href="{% url 'menu' %}" class="back-btn">メニューに戻る</a>
+      </div>
+
+      {% if user_info.photo %}
+      <div class="current-photo">
+        <label>現在の写真</label><br>
+        <img src="{{ user_info.photo.url }}" alt="現在の写真" class="current-photo-img">
+      </div>
+      {% endif %}
+
+      <form method="post" enctype="multipart/form-data" onsubmit="return validateUserInfoEditForm();">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label for="photo">写真をアップロードしてください</label>
+          <input type="file" id="photo" name="photo"
+            accept="image/jpeg,image/png,image/gif,image/webp,.jpg,.jpeg,.png,.gif,.webp">
+        </div>
+
+        <div class="form-group">
+          <label for="name">氏名</label>
+          <input type="text" id="name" name="name" maxlength="100"
+            placeholder="苗字と名前の間に半角スペースを入れてください"
+            value="{{ user_info.name }}" required>
+        </div>
+
+        <div class="form-group">
+          <label for="mbti">MBTI</label>
+          <select id="mbti" name="mbti" required>
+            <option value="">選択してください</option>
+            {% for choice in mbti_choices %}
+              {% if user_info.mbti == choice %}
+              <option value="{{ choice }}" selected>{{ choice }}</option>
+              {% else %}
+              <option value="{{ choice }}">{{ choice }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="hobby">趣味</label>
+          <input type="text" id="hobby" name="hobby" maxlength="100"
+            placeholder="100文字以下で入力してください"
+            value="{{ user_info.hobby }}" required>
+        </div>
+
+        <div class="form-group">
+          <label for="skill">特技</label>
+          <input type="text" id="skill" name="skill" maxlength="100"
+            placeholder="100文字以下で入力してください"
+            value="{{ user_info.skill }}" required>
+        </div>
+
+        <div class="form-group">
+          <label for="department">所属部署</label>
+          <select id="department" name="department" required>
+            <option value="">選択してください</option>
+            {% for choice in department_choices %}
+              {% if user_info.department == choice %}
+              <option value="{{ choice }}" selected>{{ choice }}</option>
+              {% else %}
+              <option value="{{ choice }}">{{ choice }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="introduction">自己紹介</label>
+          <textarea id="introduction" name="introduction" rows="4" required>{{ user_info.introduction }}</textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">登録</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function validateUserInfoEditForm() {
+      const name = document.getElementById("name").value.trim();
+      const mbti = document.getElementById("mbti").value.trim();
+      const hobby = document.getElementById("hobby").value.trim();
+      const skill = document.getElementById("skill").value.trim();
+      const department = document.getElementById("department").value.trim();
+      const introduction = document.getElementById("introduction").value.trim();
+
+      if (
+        name === "" ||
+        mbti === "" ||
+        hobby === "" ||
+        skill === "" ||
+        department === "" ||
+        introduction === ""
+      ) {
+        alert("未入力の項目があります。すべて入力してください。");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>メニュー</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+</head>
+<body class="menu-page">
+  <div class="page-center">
+    <div class="menu-container">
+      <div class="menu-title">マイページ</div>
+
+      {% if user_info %}
+      <div class="card menu-card">
+        {% if user_info.photo %}
+        <img src="{{ user_info.photo.url }}" alt="プロフィール写真">
+        {% endif %}
+        <h2>{{ user_info.name }}</h2>
+        <p><strong>MBTI:</strong> {{ user_info.mbti }}</p>
+        <p><strong>趣味:</strong> {{ user_info.hobby }}</p>
+        <p><strong>特技:</strong> {{ user_info.skill }}</p>
+        <p><strong>所属部署:</strong> {{ user_info.department }}</p>
+        <p><strong>自己紹介:</strong> {{ user_info.introduction }}</p>
+        <div class="edit-area">
+          <a href="{% url 'user_info_edit' %}">マイページ編集</a>
+        </div>
+      </div>
+      {% else %}
+      <div class="card menu-card">
+        <p class="message">マイページ情報が登録されていません</p>
+        <div class="edit-area edit-area-center">
+          <a href="{% url 'user_info_register' %}">マイページ登録</a>
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="menu-title">menu</div>
+      <div class="menu-links">
+        <a href="{% url 'profiles:profile_list' %}">プロフィール一覧</a>
+        <a href="{% url 'profiles:mbti' %}">MBTI集計</a>
+        <a href="{% url 'team:team_list' %}">チーム一覧</a>
+      </div>
+
+      <div class="bottom-actions">
+        <button type="button" onclick="confirmLogout()">ログアウト</button>
+        <button type="button" onclick="confirmUserDelete()">ユーザー削除</button>
+      </div>
+    </div>
+  </div>
+
+  <form id="logout-form" method="post" action="{% url 'logout' %}" class="hidden-form">
+    {% csrf_token %}
+  </form>
+  <form id="delete-form" method="post" action="{% url 'user_delete' %}" class="hidden-form">
+    {% csrf_token %}
+  </form>
+
+  <script>
+    function confirmLogout() {
+      if (confirm("ログアウトしますか？")) {
+        document.getElementById("logout-form").submit();
+      }
+    }
+    function confirmUserDelete() {
+      if (confirm("本当に削除してもよろしいですか？")) {
+        document.getElementById("delete-form").submit();
+      }
+    }
+  </script>
+</body>
+</html>

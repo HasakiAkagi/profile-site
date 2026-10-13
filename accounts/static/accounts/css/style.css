@@ -1,0 +1,1740 @@
+/* 全ページ共通 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+  min-height: 100vh;
+  color: #222;
+}
+
+.page-center {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0;
+}
+
+
+
+
+/* 共通カード */
+.card,
+.login-container,
+.form-card,
+.list-card,
+.mbti-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+/* menu.html / マイページ */
+.menu-page,
+.login-page,
+.mbti-page,
+.list-page {
+  min-height: 100vh;
+  background-image: url("../images/mbti_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.menu-page .page-center {
+  padding-top: 18px;
+}
+
+.menu-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.menu-title {
+  width: 140px;
+  margin: 18px auto 18px;
+  text-align: center;
+  border: 2px solid #1f3b57;
+  background: #fff;
+  padding: 2px 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* プロフィール表示カード */
+.card {
+  width: 360px;
+  margin-bottom: 18px;
+}
+
+.card img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  margin: 0 auto 16px;
+  display: block;
+}
+
+.menu-card h2 {
+  margin: 10px 0 12px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.menu-card p {
+  margin: 6px 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ユーザー情報編集ボタン */
+.edit-area {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.edit-area a {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #a9d6f5 !important;
+  color: #2d4f66 !important;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.edit-area a:hover {
+  background: #95c9ee !important;
+}
+
+/* menu 部分 */
+.menu-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+  margin-bottom: 26px;
+}
+
+.menu-links a {
+  min-width: 110px;
+  text-align: center;
+  padding: 14px 12px;
+  font-size: 20px;
+  background: #fff;
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: #333;
+}
+
+/* ログアウト・削除 */
+.bottom-actions {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.bottom-actions button {
+  min-width: 160px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #f6b8c8 !important;
+  color: #5a2b3c !important;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.bottom-actions button:hover {
+  background: #f2a7ba !important;
+}
+
+/* login.html / signup.html */
+.login-container {
+  width: 360px;
+  margin: 80px auto;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background: #95c9ee;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.submit-btn:hover {
+  background: #95c9ee;
+}
+
+.link-text {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.link-text a {
+  text-decoration: none;
+  color: #1466a1;
+}
+
+.link-text a:hover {
+  text-decoration: underline;
+}
+
+/* ユーザー情報登録・編集 */
+.form-card {
+  width: 500px;
+}
+
+.form-card h1 {
+  margin-top: 0;
+  text-align: center;
+}
+
+/* プロフィール一覧 */
+.list-card {
+  width: 700px;
+  border: 1px solid #f2b3f0;
+}
+
+.profile-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.profile-item {
+  width: 160px;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.profile-item:hover {
+  background: #f0f8ff;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.profile-name {
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal-photo {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+/* MBTI集計 */
+.mbti-card {
+  width: 800px;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.chart-wrapper {
+  width: 400px;
+  margin: 20px auto;
+}
+
+.search-result {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.search-result ul {
+  padding-left: 20px;
+}
+
+.mbti-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.mbti-box {
+  border-radius: 16px;
+  padding: 16px;
+  border: 4px solid #4a64a8;
+  min-height: 160px;
+  position: relative;
+}
+
+.mbti-box.blue {
+  background: #c7e3f1;
+}
+
+.mbti-box.green {
+  background: #dcedc8;
+}
+
+.mbti-box.yellow {
+  background: #f7e96c;
+}
+
+.mbti-box.purple {
+  background: #d7c8ea;
+}
+
+.box-top {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.tag {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #4a64a8;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 2px;
+}
+
+.count,
+.percent {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.count {
+  color: rgb(0, 0, 0);
+}
+
+.percent {
+  color: rgb(0, 0, 0);
+}
+
+/* 戻るボタン */
+.back-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #6c757d;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.back-btn:hover {
+  background: #5a6268;
+}
+
+.menu-page {
+  min-height: 100vh;
+}
+
+.page-center {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0;
+}
+
+.menu-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.menu-card {
+  width: 360px;
+  margin: 0 auto 18px;
+  padding: 24px 26px 22px;
+}
+
+.menu-card img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  margin: 0 auto 16px;
+  display: block;
+}
+
+.edit-area a {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #a9d6f5 !important;
+  color: #2d4f66 !important;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.menu-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+  margin-bottom: 26px;
+}
+
+.menu-links a {
+  min-width: 110px;
+  text-align: center;
+  padding: 14px 12px;
+  font-size: 20px;
+  background: #fff;
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: #333;
+}
+
+.bottom-actions {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.bottom-actions button {
+  min-width: 160px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #f6b8c8 !important;
+  color: #5a2b3c !important;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.team-list-page {
+  min-height: 100vh;
+  background-image: url("../../accounts/images/mbti_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.team-list-card {
+  width: min(100%, 900px);
+  background: #fff;
+  border: 2px solid #e8c9f2;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+}
+
+.team-list-card h1 {
+  margin: 0 0 24px;
+  font-size: 28px;
+  color: #222;
+}
+
+.search-form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 12px 0 20px;
+}
+
+.search-form input {
+  flex: 1;
+  height: 34px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+
+.search-btn,
+.create-btn,
+.back-btn,
+.edit-btn,
+.delete-btn {
+  display: inline-block;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.search-btn {
+  width: 100%;
+  background: #8ec4eb;
+  color: #000;
+}
+
+.button-area {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.team-create-area {
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  background: #707b86;
+  color: #fff;
+}
+
+.create-btn {
+  background: #8ec4eb;
+  color: #000;
+}
+
+.edit-btn {
+  background: #b79ce8;
+  color: #fff;
+}
+
+.delete-btn {
+  background: #f3a6b3;
+  color: #fff;
+}
+
+.team-list-page {
+  min-height: 100vh;
+  background-image: url("../../accounts/images/mbti_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.team-list-card {
+  width: min(100%, 900px);
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid #e9baf0;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+}
+
+.team-list-card h1 {
+  margin: 0 0 24px;
+  font-size: 28px;
+  color: #222;
+}
+
+.search-form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 12px 0 20px;
+}
+
+.search-form input {
+  flex: 1;
+  height: 34px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+
+.search-btn,
+.create-btn,
+.back-btn,
+.edit-btn,
+.delete-btn {
+  display: inline-block;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.search-btn {
+  background: #8ec4eb;
+  color: #000;
+}
+
+.button-area {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.back-btn {
+  background: #707b86;
+  color: #fff;
+}
+
+.create-btn {
+  background: #8ec4eb;
+  color: #000;
+}
+
+.edit-btn {
+  background: #b79ce8;
+  color: #fff;
+}
+
+.delete-btn {
+  background: #f3a6b3;
+  color: #fff;
+}
+
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.team-card {
+  border: 1px solid #d8c7f0;
+  border-radius: 14px;
+  padding: 16px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+
+
+.team-meta {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.team-members {
+  margin: 10px 0 0;
+  padding-left: 20px;
+}
+
+.message {
+  text-align: center;
+  color: #555;
+}
+
+.member-box {
+  border: 1px solid #ccc;
+  padding: 12px;
+  max-height: 260px;
+  overflow-y: auto;
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+.member-item {
+  margin-bottom: 8px;
+  padding: 4px 0;
+}
+
+.btn-area {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+}
+
+.self-option {
+  font-weight: bold;
+}
+
+.self-item {
+  background: #fff7e6;
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+
+.self-item strong {
+  color: #d17a00;
+}
+
+/* 全ページ共通 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+  min-height: 100vh;
+  color: #222;
+}
+
+.page-center {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0;
+}
+
+
+
+
+/* 共通カード */
+.card,
+.login-container,
+.form-card,
+.list-card,
+.mbti-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+/* menu.html / マイページ */
+.menu-page,
+.login-page,
+.mbti-page,
+.list-page {
+  min-height: 100vh;
+  background-image: url("../images/mbti_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.menu-page .page-center {
+  padding-top: 18px;
+}
+
+.menu-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.menu-title {
+  width: 140px;
+  margin: 18px auto 18px;
+  text-align: center;
+  border: 2px solid #1f3b57;
+  background: #fff;
+  padding: 2px 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* プロフィール表示カード */
+.card {
+  width: 360px;
+  margin-bottom: 18px;
+}
+
+.card img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  margin: 0 auto 16px;
+  display: block;
+}
+
+.menu-card h2 {
+  margin: 10px 0 12px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.menu-card p {
+  margin: 6px 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ユーザー情報編集ボタン */
+.edit-area {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.edit-area a {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #a9d6f5 !important;
+  color: #2d4f66 !important;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.edit-area a:hover {
+  background: #95c9ee !important;
+}
+
+/* menu 部分 */
+.menu-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+  margin-bottom: 26px;
+}
+
+.menu-links a {
+  min-width: 110px;
+  text-align: center;
+  padding: 14px 12px;
+  font-size: 20px;
+  background: #fff;
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: #333;
+}
+
+/* ログアウト・削除 */
+.bottom-actions {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.bottom-actions button {
+  min-width: 160px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #f6b8c8 !important;
+  color: #5a2b3c !important;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.bottom-actions button:hover {
+  background: #f2a7ba !important;
+}
+
+/* login.html / signup.html */
+.login-container {
+  width: 360px;
+  margin: 80px auto;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background: #95c9ee;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.submit-btn:hover {
+  background: #95c9ee;
+}
+
+.link-text {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.link-text a {
+  text-decoration: none;
+  color: #1466a1;
+}
+
+.link-text a:hover {
+  text-decoration: underline;
+}
+
+/* ユーザー情報登録・編集 */
+.form-card {
+  width: 500px;
+}
+
+.form-card h1 {
+  margin-top: 0;
+  text-align: center;
+}
+
+/* プロフィール一覧 */
+.list-card {
+  width: 700px;
+  border: 1px solid #f2b3f0;
+}
+
+.profile-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.profile-item {
+  width: 160px;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.profile-item:hover {
+  background: #f0f8ff;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.profile-name {
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal-photo {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+/* MBTI集計 */
+.mbti-card {
+  width: 800px;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.chart-wrapper {
+  width: 400px;
+  margin: 20px auto;
+}
+
+.search-result {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.search-result ul {
+  padding-left: 20px;
+}
+
+.mbti-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.mbti-box {
+  border-radius: 16px;
+  padding: 16px;
+  border: 4px solid #4a64a8;
+  min-height: 160px;
+  position: relative;
+}
+
+.mbti-box.blue {
+  background: #c7e3f1;
+}
+
+.mbti-box.green {
+  background: #dcedc8;
+}
+
+.mbti-box.yellow {
+  background: #f7e96c;
+}
+
+.mbti-box.purple {
+  background: #d7c8ea;
+}
+
+.box-top {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.tag {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #4a64a8;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 2px;
+}
+
+.count,
+.percent {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.count {
+  color: rgb(0, 0, 0);
+}
+
+.percent {
+  color: rgb(0, 0, 0);
+}
+
+/* 戻るボタン */
+.back-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #6c757d;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.back-btn:hover {
+  background: #5a6268;
+}
+
+.menu-page {
+  min-height: 100vh;
+}
+
+.page-center {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0;
+}
+
+.menu-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.menu-card {
+  width: 360px;
+  margin: 0 auto 18px;
+  padding: 24px 26px 22px;
+}
+
+.menu-card img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  margin: 0 auto 16px;
+  display: block;
+}
+
+.edit-area a {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #a9d6f5 !important;
+  color: #2d4f66 !important;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.menu-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+  margin-bottom: 26px;
+}
+
+.menu-links a {
+  min-width: 110px;
+  text-align: center;
+  padding: 14px 12px;
+  font-size: 20px;
+  background: #fff;
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: #333;
+}
+
+.bottom-actions {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.bottom-actions button {
+  min-width: 160px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #f6b8c8 !important;
+  color: #5a2b3c !important;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.team-list-page {
+  min-height: 100vh;
+  background-image: url("../../accounts/images/mbti_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.team-list-card {
+  width: min(100%, 900px);
+  background: #fff;
+  border: 2px solid #e8c9f2;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+}
+
+.team-list-card h1 {
+  margin: 0 0 24px;
+  font-size: 28px;
+  color: #222;
+}
+
+.search-form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 12px 0 20px;
+}
+
+.search-form input {
+  flex: 1;
+  height: 34px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+
+.search-btn,
+.create-btn,
+.back-btn,
+.edit-btn,
+.delete-btn {
+  display: inline-block;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.search-btn {
+  width: 100%;
+  background: #8ec4eb;
+  color: #000;
+}
+
+.button-area {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.team-create-area {
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  background: #707b86;
+  color: #fff;
+}
+
+.create-btn {
+  background: #8ec4eb;
+  color: #000;
+}
+
+.edit-btn {
+  background: #b79ce8;
+  color: #fff;
+}
+
+.delete-btn {
+  background: #f3a6b3;
+  color: #fff;
+}
+
+.team-list-page {
+  min-height: 100vh;
+  background-image: url("../../accounts/images/mbti_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.team-list-card {
+  width: min(100%, 900px);
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid #e9baf0;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+}
+
+.team-list-card h1 {
+  margin: 0 0 24px;
+  font-size: 28px;
+  color: #222;
+}
+
+.search-form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 12px 0 20px;
+}
+
+.search-form input {
+  flex: 1;
+  height: 34px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+
+.search-btn,
+.create-btn,
+.back-btn,
+.edit-btn,
+.delete-btn {
+  display: inline-block;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.search-btn {
+  background: #8ec4eb;
+  color: #000;
+}
+
+.button-area {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.back-btn {
+  background: #707b86;
+  color: #fff;
+}
+
+.create-btn {
+  background: #8ec4eb;
+  color: #000;
+}
+
+.edit-btn {
+  background: #b79ce8;
+  color: #fff;
+}
+
+.delete-btn {
+  background: #f3a6b3;
+  color: #fff;
+}
+
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.team-card {
+  border: 1px solid #d8c7f0;
+  border-radius: 14px;
+  padding: 16px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.team-name {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.team-meta {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.team-members {
+  margin: 10px 0 0;
+  padding-left: 20px;
+}
+
+.message {
+  text-align: center;
+  color: #555;
+}
+
+.member-box {
+  border: 1px solid #ccc;
+  padding: 12px;
+  max-height: 260px;
+  overflow-y: auto;
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+.member-item {
+  margin-bottom: 8px;
+  padding: 4px 0;
+}
+
+.self-item {
+  background: #fff7e6;
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+
+.btn-area {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.team-card {
+  min-height: 60px;
+}
+
+.member-box {
+  border: 1px solid #ccc;
+  padding: 12px;
+  max-height: 260px;
+  overflow-y: auto;
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+.member-item {
+  margin-bottom: 8px;
+  padding: 4px 0;
+}
+
+.btn-area {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.team-card {
+  min-height: 60px;
+}
+
+.team-name-btn {
+  width: 100%;
+  text-align: left;
+  background: white;
+  border: 1px solid #d8c8ff;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.team-name-btn:hover {
+  background: #f7f2ff;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 24px;
+  border: 1px solid #ccc;
+  width: 80%;
+  max-width: 520px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-close-btn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 6px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  position: static;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.modal-buttons .edit-btn,
+.modal-buttons .delete-btn {
+  text-decoration: none;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal-buttons .edit-btn {
+  background: #b39df5;
+}
+
+.modal-buttons .delete-btn {
+  background: #f59eb0;
+}
+
+.create-btn {
+  display: inline-block;
+  background: #8ec1e8;
+  color: #000;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.create-btn:hover {
+  background: #78b3df;
+}
+.login-page {
+  min-height: 100vh;
+  background-image: url("../images/mbti_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.edit-area-center {
+  justify-content: center;
+}
+
+.hidden-form {
+  display: none;
+}
+
+.current-photo {
+  margin-bottom: 16px;
+}
+
+.current-photo-img {
+  max-width: 180px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.login-page {
+  min-height: 100vh;
+  background-image: url("../images/mbti_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.current-photo {
+  margin-bottom: 16px;
+}
+
+.current-photo-img {
+  max-width: 180px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+body.list-page {
+  min-height: 100vh;
+  background-image: url("../images/mbti_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.button-area-center {
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.hidden-photo {
+  display: none;
+}
+
+.hidden-form {
+  display: none;
+}
+
+body.mbti-page {
+  min-height: 100vh;
+  background-image: url("../images/mbti_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.button-area-center {
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.hidden-modal {
+  display: none;
+}
+
+.inline-form {
+  display: inline;
+}

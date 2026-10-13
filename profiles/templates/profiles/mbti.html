@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>MBTI集計</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="mbti-page">
+  <div class="page-center">
+    <div class="mbti-card">
+      <h1>MBTI集計</h1>
+
+      <div class="button-area">
+        <a href="{% url 'menu' %}" class="back-btn">メニューに戻る</a>
+      </div>
+
+      <form method="get" class="search-form">
+        <div class="form-group">
+          <label for="department">所属部署</label>
+          <select id="department" name="department">
+            <option value="">選択してください</option>
+            {% for choice in department_choices %}
+            <option value="{{ choice }}" {% if department == choice %}selected{% endif %}>{{ choice }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="relationship">関係値</label>
+          <select id="relationship" name="relationship">
+            <option value="">選択してください</option>
+            {% for choice in relationship_choices %}
+            <option value="{{ choice }}" {% if relationship == choice %}selected{% endif %}>{{ choice }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <button type="submit" class="submit-btn">検索</button>
+      </form>
+
+      <div class="chart-wrapper">
+        <canvas id="mbtiChart"></canvas>
+      </div>
+
+      {% if searched %}
+      <div class="search-result">
+        <h2>検索結果</h2>
+
+        <h3>番人グループ</h3>
+        {% if blue_profiles %}
+        <ul>
+          {% for profile in blue_profiles %}
+          <li>{{ profile.name }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>該当するデータがありません</p>
+        {% endif %}
+
+        <h3>外交官グループ</h3>
+        {% if green_profiles %}
+        <ul>
+          {% for profile in green_profiles %}
+          <li>{{ profile.name }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>該当するデータがありません</p>
+        {% endif %}
+
+        <h3>探検家グループ</h3>
+        {% if yellow_profiles %}
+        <ul>
+          {% for profile in yellow_profiles %}
+          <li>{{ profile.name }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>該当するデータがありません</p>
+        {% endif %}
+
+        <h3>分析家グループ</h3>
+        {% if purple_profiles %}
+        <ul>
+          {% for profile in purple_profiles %}
+          <li>{{ profile.name }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>該当するデータがありません</p>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <div class="mbti-grid">
+        <div class="mbti-box blue">
+          <div class="group-label">番人</div>
+          <div class="count">{{ blue_count }}件</div>
+          <div class="percent">{{ blue_percent }}%</div>
+        </div>
+        <div class="mbti-box green">
+          <div class="group-label">外交官</div>
+          <div class="count">{{ green_count }}件</div>
+          <div class="percent">{{ green_percent }}%</div>
+        </div>
+        <div class="mbti-box yellow">
+          <div class="group-label">探検家</div>
+          <div class="count">{{ yellow_count }}件</div>
+          <div class="percent">{{ yellow_percent }}%</div>
+        </div>
+        <div class="mbti-box purple">
+          <div class="group-label">分析家</div>
+          <div class="count">{{ purple_count }}件</div>
+          <div class="percent">{{ purple_percent }}%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('mbtiChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['番人', '外交官', '探検家', '分析家'],
+        datasets: [{
+          data: [{{ blue_count }}, {{ green_count }}, {{ yellow_count }}, {{ purple_count }}],
+          backgroundColor: ['#7fb3d5', '#a9dfbf', '#f7dc6f', '#d7bde2'],
+          borderColor: ['#ffffff', '#ffffff', '#ffffff', '#ffffff'],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
