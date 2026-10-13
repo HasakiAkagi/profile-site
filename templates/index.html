@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="greeting">{{ greeting }}、{{ display_name }}さん</h2>
+    <nav class="menu-bar">
+        <a href="{{ url_for('favorites') }}">お気に入りの動物</a>
+        <a href="{{ url_for('regist') }}">登録</a>
+        <a href="{{ url_for('user_page') }}">マイページ</a>
+        <form action="/logout" method="post" class="logout-form" onsubmit="return confirm('ログアウトしますか？');">
+            <button type="submit" class="logout-button">ログアウト</button>
+        </form>
+    </nav>
+
+    <h2 class="favorite-title">全国制覇トップページ</h2>
+
+    <div class="achievement-box">
+        <p class="achievement-rate">達成率: {{ achievement_rate }}%</p>
+        <p class="achievement-count">達成県数: {{ achieved_count }} / 47</p>
+        <p class="achievement-count">未訪問県数: {{ unvisited_count }} / 47</p>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-bar" style="width: {{ achievement_rate }}%;"></div>
+    </div>
+
+    <h3>行った県</h3>
+    {% if prefecture_list == [] %}
+    <p>まだ行った県はありません</p>
+    {% else %}
+    <div class="prefecture-grid">
+        {% for item in prefecture_list %}
+        <button type="button" class="prefecture-card prefecture-button" data-prefecture="{{ item.prefecture }}">
+            <div class="prefecture-name">{{ item.prefecture }}</div>
+            <div class="prefecture-count">{{ item.count }}件</div>
+        </button>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- 県ごとの施設表示エリア -->
+    <div id="prefectureMemoArea" style="margin-top: 24px;"></div>
+
+    <h3>施設メモ</h3>
+    <a href="/wish/regist" class="add-wish-button">行きたい施設を追加</a>
+
+    {% if wish_list == [] %}
+    <p>まだ施設メモは登録されていません</p>
+    {% else %}
+    <div class="card-grid">
+        {% for wish in wish_list %}
+        <div class="card">
+            <button type="button" class="card-button" onclick="openWishModal(
+                        '{{ wish.id }}',
+                        '{{ wish.zoo_name|e }}',
+                        '{{ wish.prefecture|e }}',
+                        '{{ wish.memo|e }}',
+                        '{{ wish.created_at|e }}'
+                    )">
+                <div class="wish-subject">{{ wish.zoo_name }}</div>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<!-- 施設メモモーダル -->
+<div id="wishModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeWishModal()">&times;</span>
+        <h3>施設メモ詳細</h3>
+        <p><strong>施設名:</strong> <span id="modalWishName"></span></p>
+        <p><strong>都道府県:</strong> <span id="modalWishPrefecture"></span></p>
+        <p><strong>メモ:</strong></p>
+        <p id="modalWishMemo"></p>
+        <p><strong>登録日:</strong> <span id="modalWishCreatedAt"></span></p>
+
+        <form id="wishDeleteForm" method="post">
+            <button type="submit" class="delete-button" onclick="return confirm('このメモを削除しますか？');">
+                削除
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // 施設メモ用モーダル
+    function openWishModal(id, name, prefecture, memo, createdAt) {
+        document.getElementById("modalWishName").textContent = name;
+        document.getElementById("modalWishPrefecture").textContent = prefecture;
+        document.getElementById("modalWishMemo").textContent = memo;
+        document.getElementById("modalWishCreatedAt").textContent = createdAt;
+        document.getElementById("wishDeleteForm").action = "/wish/" + id + "/delete";
+        document.getElementById("wishModal").style.display = "flex";
+    }
+
+    function closeWishModal() {
+        document.getElementById("wishModal").style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        const modal = document.getElementById("wishModal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // 県ごとの施設表示
+    const memoData = [
+        {% for memo in memo_list %}
+    {
+        prefecture: "{{ memo.prefecture|e }}",
+            facility_name: "{{ memo.facility_name|e }}",
+                visit_date: "{{ memo.visit_date|e }}",
+                    favorite_animal: "{{ memo.favorite_animal|e }}",
+                        memo: "{{ memo.memo|e }}"
+    },
+    {% endfor %}
+    ];
+
+    document.querySelectorAll(".prefecture-button").forEach(button => {
+        button.addEventListener("click", function () {
+            const prefecture = this.dataset.prefecture;
+            const targetArea = document.getElementById("prefectureMemoArea");
+
+            const filtered = memoData.filter(item => item.prefecture === prefecture);
+
+            let html = `<h3>${prefecture}の施設</h3>`;
+
+            if (filtered.length === 0) {
+                html += "<p>この県の施設はありません</p>";
+            } else {
+                html += "<div class='card-grid'>";
+                filtered.forEach(item => {
+                    html += `
+                        <div class="card">
+                            <div class="card-title">${item.facility_name}</div>
+                            <p>${item.visit_date ? item.visit_date : ""}</p>
+                        </div>
+                    `;
+                });
+                html += "</div>";
+            }
+
+            targetArea.innerHTML = html;
+        });
+    });
+</script>
+{% endblock %}

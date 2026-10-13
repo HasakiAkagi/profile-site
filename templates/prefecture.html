@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- メニューバー -->
+<nav class="menu-bar">
+  <a href="/">トップへ戻る</a>
+  <a href="/regist">登録</a>
+  <form action="/logout" method="post" class="logout-form" onsubmit="return confirm('ログアウトしますか？');">
+    <button type="submit" class="logout-button">ログアウト</button>
+  </form>
+</nav>
+
+<h2>県別一覧</h2>
+
+<!-- 並び替え -->
+<div class="sort-links">
+  <a href="/prefecture?sort=name">都道府県順</a>
+  <a href="/prefecture?sort=count_desc">件数が多い順</a>
+  <a href="/prefecture?sort=count_asc">件数が少ない順</a>
+</div>
+
+{% if prefecture_list == [] %}
+<p>記録は登録されていません</p>
+{% else %}
+<div class="achievement-box">
+  <p class="achievement-rate">達成率: {{ achievement_rate }}%</p>
+  <p class="achievement-count">達成県数: {{ achieved_count }} / 47</p>
+</div>
+
+<table border="1">
+  <tr>
+    <th>都道府県</th>
+    <th>件数</th>
+  </tr>
+  {% for item in prefecture_list %}
+  <tr>
+    <td>
+      <a href="/prefecture_detail?name={{ item.prefecture }}">{{ item.prefecture }}</a>
+    </td>
+    <td>{{ item.count }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}

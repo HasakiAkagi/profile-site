@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <nav class="menu-bar">
+    <a href="/">トップ</a>
+    <a href="/favorites">お気に入りの動物</a>
+    <a href="/regist">登録</a>
+    <form action="/logout" method="post" class="logout-form" onsubmit="return confirm('ログアウトしますか？');">
+      <button type="submit" class="logout-button">ログアウト</button>
+    </form>
+  </nav>
+
+  <h2 class="favorite-title">マイページ</h2>
+
+  <div class="achievement-box">
+    <p class="achievement-rate">あなたの登録情報</p>
+    <p class="achievement-count">名前: {{ user_name }}</p>
+    <p class="achievement-count">ユーザID: {{ user_id }}</p>
+    <p class="achievement-count">登録日: {{ created_at }}</p>
+  </div>
+
+  <div class="achievement-box">
+    <p class="achievement-rate">活動情報</p>
+    <p class="achievement-count">記録件数: {{ memo_count }}件</p>
+    <p class="achievement-count">行った県数: {{ achieved_count }}県</p>
+    <p class="achievement-count">達成率: {{ achievement_rate }}%</p>
+    <p class="achievement-count">施設メモ件数: {{ wish_count }}件</p>
+    <p class="achievement-count">お気に入り件数: {{ favorite_count }}件</p>
+  </div>
+
+  <div class="login-box" style="margin-top: 20px;">
+    <h2>アカウント情報の変更</h2>
+    <p class="login-description">名前・ユーザID・パスワードを変更できます。</p>
+
+    <form method="post" action="/user/update_name">
+      <label>名前</label>
+      <input type="text" name="name" value="{{ user_name }}" required>
+      <button type="submit">名前を変更</button>
+    </form>
+
+    <form method="post" action="/user/update_user_id">
+      <label>ユーザID</label>
+      <input type="text" name="user_id" value="{{ user_id }}" required>
+      <button type="submit">ユーザIDを変更</button>
+    </form>
+
+    <form method="post" action="/user/update_password">
+      <label>現在のパスワード</label>
+      <input type="password" name="current_password" required>
+
+      <label>新しいパスワード</label>
+      <input type="password" name="new_password" required>
+
+      <button type="submit">パスワードを変更</button>
+    </form>
+  </div>
+
+  <div class="login-box" style="margin-top: 20px;">
+    <h2>一言メモ</h2>
+    <p class="login-description">今年の目標やメモを書いておけます。</p>
+
+    <form method="post" action="/user/update_memo">
+      <label>一言メモ</label>
+      <textarea name="profile_memo" rows="4">{{ profile_memo }}</textarea>
+      <button type="submit">保存</button>
+    </form>
+  </div>
+
+  <div class="login-box" style="margin-top: 20px;">
+    <form action="/logout" method="post" class="logout-form" onsubmit="return confirm('ログアウトしますか？');">
+      <button type="submit" class="logout-button">ログアウト</button>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="regist-box">
+    <h2>施設メモの編集</h2>
+    <p class="login-description">行きたい施設の情報を編集できます。</p>
+    {% if error_message %}
+    <p class="error-message">{{ error_message }}</p>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" class="regist-form">
+      <div class="form-group">
+        <label for="facility_type">種別</label>
+        <select name="facility_type" id="facility_type" required>
+          <option value="動物園" {% if post["facility_type"]=="動物園" %}selected{% endif %}>動物園</option>
+          <option value="水族館" {% if post["facility_type"]=="水族館" %}selected{% endif %}>水族館</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="facility_name">施設名</label>
+        <input type="text" name="facility_name" id="facility_name" value="{{ post['facility_name'] }}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="prefecture">都道府県</label>
+        <select name="prefecture" id="prefecture" required>
+          <option value="">選択してください</option>
+          <option value="北海道" {% if post['prefecture']=='北海道' %}selected{% endif %}>北海道</option>
+          <option value="青森県" {% if post['prefecture']=='青森県' %}selected{% endif %}>青森県</option>
+          <option value="岩手県" {% if post['prefecture']=='岩手県' %}selected{% endif %}>岩手県</option>
+          <option value="宮城県" {% if post['prefecture']=='宮城県' %}selected{% endif %}>宮城県</option>
+          <option value="秋田県" {% if post['prefecture']=='秋田県' %}selected{% endif %}>秋田県</option>
+          <option value="山形県" {% if post['prefecture']=='山形県' %}selected{% endif %}>山形県</option>
+          <option value="福島県" {% if post['prefecture']=='福島県' %}selected{% endif %}>福島県</option>
+          <option value="茨城県" {% if post['prefecture']=='茨城県' %}selected{% endif %}>茨城県</option>
+          <option value="栃木県" {% if post['prefecture']=='栃木県' %}selected{% endif %}>栃木県</option>
+          <option value="群馬県" {% if post['prefecture']=='群馬県' %}selected{% endif %}>群馬県</option>
+          <option value="埼玉県" {% if post['prefecture']=='埼玉県' %}selected{% endif %}>埼玉県</option>
+          <option value="千葉県" {% if post['prefecture']=='千葉県' %}selected{% endif %}>千葉県</option>
+          <option value="東京都" {% if post['prefecture']=='東京都' %}selected{% endif %}>東京都</option>
+          <option value="神奈川県" {% if post['prefecture']=='神奈川県' %}selected{% endif %}>神奈川県</option>
+          <option value="新潟県" {% if post['prefecture']=='新潟県' %}selected{% endif %}>新潟県</option>
+          <option value="富山県" {% if post['prefecture']=='富山県' %}selected{% endif %}>富山県</option>
+          <option value="石川県" {% if post['prefecture']=='石川県' %}selected{% endif %}>石川県</option>
+          <option value="福井県" {% if post['prefecture']=='福井県' %}selected{% endif %}>福井県</option>
+          <option value="山梨県" {% if post['prefecture']=='山梨県' %}selected{% endif %}>山梨県</option>
+          <option value="長野県" {% if post['prefecture']=='長野県' %}selected{% endif %}>長野県</option>
+          <option value="岐阜県" {% if post['prefecture']=='岐阜県' %}selected{% endif %}>岐阜県</option>
+          <option value="静岡県" {% if post['prefecture']=='静岡県' %}selected{% endif %}>静岡県</option>
+          <option value="愛知県" {% if post['prefecture']=='愛知県' %}selected{% endif %}>愛知県</option>
+          <option value="三重県" {% if post['prefecture']=='三重県' %}selected{% endif %}>三重県</option>
+          <option value="滋賀県" {% if post['prefecture']=='滋賀県' %}selected{% endif %}>滋賀県</option>
+          <option value="京都府" {% if post['prefecture']=='京都府' %}selected{% endif %}>京都府</option>
+          <option value="大阪府" {% if post['prefecture']=='大阪府' %}selected{% endif %}>大阪府</option>
+          <option value="兵庫県" {% if post['prefecture']=='兵庫県' %}selected{% endif %}>兵庫県</option>
+          <option value="奈良県" {% if post['prefecture']=='奈良県' %}selected{% endif %}>奈良県</option>
+          <option value="和歌山県" {% if post['prefecture']=='和歌山県' %}selected{% endif %}>和歌山県</option>
+          <option value="鳥取県" {% if post['prefecture']=='鳥取県' %}selected{% endif %}>鳥取県</option>
+          <option value="島根県" {% if post['prefecture']=='島根県' %}selected{% endif %}>島根県</option>
+          <option value="岡山県" {% if post['prefecture']=='岡山県' %}selected{% endif %}>岡山県</option>
+          <option value="広島県" {% if post['prefecture']=='広島県' %}selected{% endif %}>広島県</option>
+          <option value="山口県" {% if post['prefecture']=='山口県' %}selected{% endif %}>山口県</option>
+          <option value="徳島県" {% if post['prefecture']=='徳島県' %}selected{% endif %}>徳島県</option>
+          <option value="香川県" {% if post['prefecture']=='香川県' %}selected{% endif %}>香川県</option>
+          <option value="愛媛県" {% if post['prefecture']=='愛媛県' %}selected{% endif %}>愛媛県</option>
+          <option value="高知県" {% if post['prefecture']=='高知県' %}selected{% endif %}>高知県</option>
+          <option value="福岡県" {% if post['prefecture']=='福岡県' %}selected{% endif %}>福岡県</option>
+          <option value="佐賀県" {% if post['prefecture']=='佐賀県' %}selected{% endif %}>佐賀県</option>
+          <option value="長崎県" {% if post['prefecture']=='長崎県' %}selected{% endif %}>長崎県</option>
+          <option value="熊本県" {% if post['prefecture']=='熊本県' %}selected{% endif %}>熊本県</option>
+          <option value="大分県" {% if post['prefecture']=='大分県' %}selected{% endif %}>大分県</option>
+          <option value="宮崎県" {% if post['prefecture']=='宮崎県' %}selected{% endif %}>宮崎県</option>
+          <option value="鹿児島県" {% if post['prefecture']=='鹿児島県' %}selected{% endif %}>鹿児島県</option>
+          <option value="沖縄県" {% if post['prefecture']=='沖縄県' %}selected{% endif %}>沖縄県</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="visit_date">訪問日</label>
+        <input type="date" name="visit_date" id="visit_date" value="{{ post['visit_date'] }}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="favorite_animal">お気に入りの動物</label>
+        <input type="text" name="favorite_animal" id="favorite_animal" value="{{ post['favorite_animal'] or '' }}"
+          placeholder="例：ペンギン">
+      </div>
+
+      {% if error_message %}
+      <p class="error-message">{{ error_message }}</p>
+      {% endif %}
+      <div class="form-group">
+        <label for="photo">写真</label>
+
+        {% if post['photo_path'] %}
+        <img src="{{ post['photo_path'] }}" alt="現在の写真"
+          style="max-width: 220px; border-radius: 10px; margin-bottom: 10px;">
+        {% endif %}
+
+        <input type="file" name="photo" id="photo" accept="image/*">
+      </div>
+
+      <div class="form-group">
+        <label for="memo">メモ</label>
+        <textarea name="memo" id="memo" rows="5" placeholder="感想や思い出を入力">{{ post['memo'] or '' }}</textarea>
+      </div>
+
+      <button type="submit" class="submit-button">更新する</button>
+    </form>
+
+    <div class="back-links">
+      <a href="/">一覧に戻る</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

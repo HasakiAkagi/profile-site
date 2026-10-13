@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-box">
+    <h2>新規ユーザ登録画面</h2>
+    <p class="login-description">ユーザIDとパスワードを入力して登録してください</p>
+
+    {% if error %}
+    <p class="login-error">{{ error }}</p>
+    {% endif %}
+
+    <form method="post">
+        <label for="user_id">ユーザID</label>
+        <input type="text" id="user_id" name="user_id" placeholder="ユーザIDを入力" required>
+
+        <label for="password">パスワード</label>
+        <input type="password" id="password" name="password" placeholder="パスワードを入力" required>
+
+        <button type="submit">ユーザ登録</button>
+    </form>
+
+    <a href="/login" class="login-link">ログイン画面へ戻る</a>
+</div>
+{% endblock %}
