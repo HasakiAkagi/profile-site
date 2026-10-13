@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <nav class="menu-bar">
+    <a href="/">トップ</a>
+    <a href="/regist">登録</a>
+    <a href="/user">マイページ</a>
+    <form action="/logout" method="post" class="logout-form" onsubmit="return confirm('ログアウトしますか？');">
+      <button type="submit" class="logout-button">ログアウト</button>
+    </form>
+  </nav>
+
+  <h2 class="favorite-title">あなたのお気に入りの動物</h2>
+
+  {% if favorite_list == [] %}
+  <p>まだお気に入りの動物は登録されていません</p>
+  {% else %}
+  <div class="card-grid">
+    {% for item in favorite_list %}
+    <div class="card">
+      <button type="button" class="card-button" onclick="openDetailModal(
+                '{{ item.id }}',
+                '{{ item.facility_type|e }}',
+                '{{ item.facility_name|e }}',
+                '{{ item.prefecture|e }}',
+                '{{ item.visit_date|e }}',
+                '{{ item.favorite_animal|e }}',
+                '{{ item.photo_path|e }}',
+                '{{ item.memo|e }}'
+              )">
+        <div class="image-wrap">
+          {% if item.photo_path %}
+          <img src="{{ item.photo_path }}" alt="{{ item.favorite_animal }}">
+          {% else %}
+          <div class="no-photo">写真なし</div>
+          {% endif %}
+        </div>
+        <div class="card-title">{{ item.favorite_animal }}</div>
+        <p>{{ item.facility_name }}</p>
+      </button>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+
+<!-- モーダル -->
+<div id="detailModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeDetailModal()">&times;</span>
+    <h3>登録詳細</h3>
+
+    <p><strong>種別:</strong> <span id="modalType"></span></p>
+    <p><strong>施設名:</strong> <span id="modalName"></span></p>
+    <p><strong>都道府県:</strong> <span id="modalPrefecture"></span></p>
+    <p><strong>訪問日:</strong> <span id="modalDate"></span></p>
+    <p><strong>お気に入りの動物:</strong> <span id="modalAnimal"></span></p>
+
+    <img id="modalPhoto" class="modal-image" src="" alt="">
+
+    <p><strong>メモ:</strong></p>
+    <p id="modalMemo"></p>
+
+    <div class="modal-action-buttons">
+      <a id="editLink" href="#" class="modal-edit-button">編集</a>
+
+      <form id="deleteForm" method="post" class="modal-delete-form">
+        <button type="submit" class="modal-delete-button" onclick="return confirm('このデータを削除しますか？');">
+          削除
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openDetailModal(id, type, name, prefecture, visitDate, animal, photoPath, memo) {
+    document.getElementById("modalType").textContent = type;
+    document.getElementById("modalName").textContent = name;
+    document.getElementById("modalPrefecture").textContent = prefecture;
+    document.getElementById("modalDate").textContent = visitDate;
+    document.getElementById("modalAnimal").textContent = animal;
+    document.getElementById("modalMemo").textContent = memo;
+
+    const photo = document.getElementById("modalPhoto");
+    if (photoPath && photoPath !== "") {
+      photo.src = photoPath;
+      photo.style.display = "block";
+    } else {
+      photo.src = "";
+      photo.style.display = "none";
+    }
+
+    document.getElementById("editLink").href = "/" + id + "/edit";
+    document.getElementById("deleteForm").action = "/" + id + "/delete";
+
+    document.getElementById("detailModal").style.display = "flex";
+  }
+
+  function closeDetailModal() {
+    document.getElementById("detailModal").style.display = "none";
+  }
+
+  window.onclick = function (event) {
+    const modal = document.getElementById("detailModal");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+{% endblock %}
